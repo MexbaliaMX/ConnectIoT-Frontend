@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button"
 import { FormattedMessage } from "react-intl";
