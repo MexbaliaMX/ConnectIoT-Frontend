@@ -1,21 +1,4 @@
-import getConfig from '../config';
-import { keyStores, Near, connect, WalletConnection, utils } from 'near-api-js';
 import axios from "axios";
-export const CONTRACT_ID = "dev-1666292531559-61037773885360";
-
-export const {
-	networkId, nodeUrl, walletUrl
-} = getConfig();
-
-//Función: Get Wallet
-//Funcion para obtener la Wallet del usuario
-export const getWallet = async () => {
-	const near = await connect({
-		networkId, nodeUrl, walletUrl, deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() },
-	});
-	const wallet = new WalletConnection(near);
-	return { near, wallet };
-};
 
 
 //Función: Call Method
