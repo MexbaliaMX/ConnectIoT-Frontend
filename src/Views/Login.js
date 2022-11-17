@@ -5,12 +5,15 @@ import Container from 'react-bootstrap/Container';
 
 
 
-export default function Login() {
+export default function Login({nearConfig, walletConnection, currentUser}) {
     return(
         <Container fluid>
             <NavbarApp type="login"/>
             <div>
-                <LoginForm/>
+                <LoginForm 
+                nearConfig = {nearConfig}
+                walletConnection = {walletConnection}
+                currentUser = {currentUser}/>
             </div>
         </Container>
     )

@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
+import { FormattedMessage } from "react-intl";
 
 export default function SensorCard(props) {
   const [showDevice, setShowDevice] = useState(false);
@@ -31,23 +32,23 @@ export default function SensorCard(props) {
           closeButton
           style={{ background: "#004aad", color: "#f6f7fc" }}
         >
-          <Modal.Title>Agregar dispositivo</Modal.Title>
+          <Modal.Title><FormattedMessage id="app.sensor" defaultMessage="Add sensor"/></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="newDevice">
-              <Form.Label>Tipo de Grafica</Form.Label>
+              <Form.Label><FormattedMessage id="app.chartType" defaultMessage="Chart type"/></Form.Label>
               <Form.Select>
                 <option>Grafica</option>
               </Form.Select>
             </Form.Group>
           </Form>
-          Datos
+          <FormattedMessage id="app.data" defaultMessage="Data"/>
           <Table striped>
             <thead>
               <tr>
-                <th>Dato</th>
-                <th>Valor</th>
+                <th><FormattedMessage id="app.data" defaultMessage="Data"/></th>
+                <th><FormattedMessage id="app.value" defaultMessage="Value"/></th>
               </tr>
             </thead>
             <tbody>

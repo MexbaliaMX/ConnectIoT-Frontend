@@ -2,8 +2,9 @@ import "./style.css";
 import { Plus, FileEarmarkText, DeviceSsd } from "react-bootstrap-icons";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 export default function FloatingButton() {
   const [showNewDevice, setShowNewDevice] = useState(false);
@@ -31,15 +32,33 @@ export default function FloatingButton() {
         </label>
       </div>
       <Modal show={showNewRegistry} onHide={handleCloseRegistry}>
-        <Modal.Header closeButton style={{ background: "#004aad", color:"#f6f7fc"}}>
-          <Modal.Title>Agregar registro</Modal.Title>
+        <Modal.Header
+          closeButton
+          style={{ background: "#004aad", color: "#f6f7fc" }}
+        >
+          <Modal.Title>
+            <FormattedMessage
+              id="app.addRegistryText"
+              defaultMessage="Add registry"
+            />
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="newRegistry">
-              <Form.Label>Nombre del registro</Form.Label>
+              <Form.Label>
+                <FormattedMessage
+                  id="app.addRegistryTextfield"
+                  defaultMessage="Data"
+                />
+              </Form.Label>
               <Form.Control
-                placeholder="Introduce el nombre del registro"
+                placeholder={
+                  <FormattedMessage
+                    id="app.addRegistryPlaceholder"
+                    defaultMessage="Data"
+                  />
+                }
                 autoFocus
               />
             </Form.Group>
@@ -47,24 +66,42 @@ export default function FloatingButton() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleCloseRegistry}>
-            Cancelar
+            <FormattedMessage id="app.cancelBtn" defaultMessage="Cancel" />
           </Button>
           <Button variant="primary" onClick={handleCloseRegistry}>
-            Agregar
+            <FormattedMessage id="app.addBtn" defaultMessage="Add" />
           </Button>
         </Modal.Footer>
       </Modal>
 
       <Modal show={showNewDevice} onHide={handleCloseDevice}>
-        <Modal.Header closeButton style={{ background: "#004aad", color:"#f6f7fc"}}>
-          <Modal.Title>Agregar dispositivo</Modal.Title>
+        <Modal.Header
+          closeButton
+          style={{ background: "#004aad", color: "#f6f7fc" }}
+        >
+          <Modal.Title>
+            <FormattedMessage
+              id="app.addSensorText"
+              defaultMessage="Add sensor"
+            />
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="newDevice">
-              <Form.Label>Nombre del dispositivo</Form.Label>
+              <Form.Label>
+                <FormattedMessage
+                  id="app.addSensorTextfield"
+                  defaultMessage="Sensor name"
+                />
+              </Form.Label>
               <Form.Control
-                placeholder="Introduce el nombre del dispositivo"
+                placeholder={
+                  <FormattedMessage
+                    id="app.addSensorPlaceholder"
+                    defaultMessage="Data"
+                  />
+                }
                 autoFocus
               />
             </Form.Group>
@@ -72,10 +109,10 @@ export default function FloatingButton() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleCloseDevice}>
-            Cancelar
+          <FormattedMessage id="app.cancelBtn" defaultMessage="Cancel" />
           </Button>
           <Button variant="primary" onClick={handleCloseDevice}>
-            Agregar
+          <FormattedMessage id="app.addBtn" defaultMessage="Add"/>
           </Button>
         </Modal.Footer>
       </Modal>

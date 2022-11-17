@@ -1,0 +1,22 @@
+{
+    "app.barWelcome":"Bienvenido a ConnectIoT",
+    "app.loginWelcomeMsg": "Ingresa a tu Near Wallet",
+    "app.loginInstructions": "Accede a tu Near Wallet para poder iniciar en ConnectIoT",
+    "app.loginBtn":"Ingresa a tu Near Wallet",
+    "app.loginNewAccount1": "Aun no tienes una Near Wallet?",
+    "app.loginNewAccount2": "Crea una ahora",
+    "app.exitBtn": "Salir",
+    "app.registrySelect":"Selecciona un registro",
+    "app.chartType":"Tipo de gráfica",
+    "app.data":"Datos",
+    "app.value":"Valor",
+    "app.sensor":"Sensor",
+    "app.addSensorText":"Agregar un sensor",
+    "app.addSensorTextfield":"Nombre del sensor",
+    "app.addSensorPlaceholder":"Escribe el nombre del nuevo sensor",
+    "app.addRegistryText":"Agregar un registro",
+    "app.addRegistryTextfield":"Nombre del registro",
+    "app.addRegistryPlaceholder":"Escribe el nombre del nuevo registro",
+    "app.addBtn":"Agregar",
+    "app.cancelBtn":"Cancelar"
+}
