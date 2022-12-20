@@ -5,7 +5,7 @@ This is the ConenctIoT users app. This app simulates the acquisition of device d
   <img src="https://github.com/EbanCuMo/ConnectIoT-Platform/blob/main/assets/images/ConnectIoT-React.png" />
 </p>
 
-# Getting Started with ConnectIoT Web App
+## Getting Started with ConnectIoT Web App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
