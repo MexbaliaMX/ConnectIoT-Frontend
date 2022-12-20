@@ -7,10 +7,14 @@ import Form from "react-bootstrap/Form";
 import { useContext } from "react";
 import { Context } from "../Wraper";
 import { FormattedMessage } from "react-intl";
+import Modal from "react-bootstrap/Modal";
+import { useState } from "react";
+import {deleteRegistry} from "../../Utils/Functions";
 
 export default function NavbarApp({type, nearConfig, walletConnection, currentUser}) {
   const context = useContext(Context);
 
+  
   const signOut = () => {
     try{
       walletConnection.signOut();
@@ -63,15 +67,22 @@ export default function NavbarApp({type, nearConfig, walletConnection, currentUs
             >
               <option value="es">Español</option>
               <option value="en">English</option>
+
             </Form.Select>
+
             <Form.Select className="me-2">
               <option><FormattedMessage id="app.registrySelect" defaultMessage="Registro"/></option>
               <option>Registros</option>
+              
             </Form.Select>
+            
             <Button variant="danger" onClick={signOut}>
             <FormattedMessage id="app.exitBtn" defaultMessage="Cancel" />
             </Button>
+
+            
           </Nav>
+
         </Container>
       </Navbar>
     );

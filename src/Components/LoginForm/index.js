@@ -10,6 +10,7 @@ export default function LoginForm({nearConfig, walletConnection, currentUser}){
       walletConnection.requestSignIn(
         'NEAR Guest Book'
       );
+        
     } catch(e){
       console.log(e);
     }
