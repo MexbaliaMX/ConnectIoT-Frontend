@@ -7,9 +7,7 @@ import Form from "react-bootstrap/Form";
 import { useContext } from "react";
 import { Context } from "../Wraper";
 import { FormattedMessage } from "react-intl";
-import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
-import {deleteRegistry} from "../../Utils/Functions";
+
 
 export default function NavbarApp({type, nearConfig, walletConnection, currentUser}) {
   const context = useContext(Context);

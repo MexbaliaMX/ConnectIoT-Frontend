@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
-import { useState,useEffect } from "react";
+import { useState} from "react";
 import Container from "react-bootstrap/esm/Container";
 import { FormattedMessage } from "react-intl";
 import { setDeviceDataParam,setDeviceMetadataParam,deleteDeviceFromRegistry, getDeviceData,getDeviceMetadata } from "../../Utils/Functions";
@@ -47,6 +47,7 @@ export default function SensorCard(props) {
   const [dataJSON, setDataItems] = useState([]);
   const [metadataJSON, setMetaDataItems] = useState([]);
   
+  const accountId=process.env.REACT_APP_NEAR_ACCOUNT_ID;
   console.log(registry_name);
   console.log(device_name);
  
@@ -55,7 +56,7 @@ export default function SensorCard(props) {
     getDeviceData(
       registry_name,
       device_name,
-    "ebancumo.testnet").then((resp) => {
+    accountId).then((resp) => {
        
         setDataItems(resp);
         // console.log(resp);
@@ -68,9 +69,6 @@ export default function SensorCard(props) {
 
     
       }
-// useEffect(() => {
-//   getItems();
-//   }, []);
 
 
 function getMetaDataJSON(){
@@ -78,7 +76,7 @@ function getMetaDataJSON(){
   getDeviceMetadata(
   registry_name,
   device_name,
-  "ebancumo.testnet").then((resp) => {
+  accountId).then((resp) => {
      
       setMetaDataItems(resp);
       // console.log(resp);
@@ -209,7 +207,7 @@ function getMetaDataJSON(){
               device_name,
               document.getElementById("txtNDA").value,
               document.getElementById("txtNDAV").value,
-              "ebancumo.testnet"
+              accountId
               )}}>
               <FormattedMessage id="app.addBtn" defaultMessage="Add"  />
             </Button>
@@ -323,7 +321,7 @@ function getMetaDataJSON(){
                 document.getElementById("txtMD").value,
                 document.getElementById("txtMDV").value,
                   
-                "ebancumo.testnet",
+                accountId,
                 )}}>
                  
               <FormattedMessage id="app.addBtn" defaultMessage="Add"  />
@@ -425,7 +423,7 @@ function getMetaDataJSON(){
                 document.getElementById("txtDAP").value,
                 document.getElementById("txtVDP").value,
                   
-                "ebancumo.testnet",
+                accountId,
                 )}}>
                  
               <FormattedMessage id="app.addBtn" defaultMessage="Add"  />
@@ -536,7 +534,7 @@ function getMetaDataJSON(){
                 document.getElementById("txtMDAP").value,
                 document.getElementById("txtVMDP").value,
                   
-                "ebancumo.testnet",
+                accountId,
                 )}}>
                  
               <FormattedMessage id="app.addBtn" defaultMessage="Add"  />
@@ -556,10 +554,42 @@ function getMetaDataJSON(){
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="newDevice">
-              <Form.Label><FormattedMessage id="app.chartType" defaultMessage="Chart type"/></Form.Label>
+              {/* <Form.Label><FormattedMessage id="app.chartType" defaultMessage="Chart type"/></Form.Label>
               <Form.Select>
                 <option><FormattedMessage id="app.chart" defaultMessage="Chart"/></option>
-              </Form.Select>
+              </Form.Select> */}
+              <Form.Label>
+        <FormattedMessage
+          id="app.addRegistryTextfield"
+          defaultMessage="Data"
+        />
+      </Form.Label>
+      <Form.Control id ="txtRV" type="text" 
+      onChange={()=>registryChange(document.getElementById("txtRV").value)}
+        // placeholder={
+        //   <FormattedMessage
+        //     id="app.addRegistryPlaceholder"
+        //     defaultMessage="Data"
+        //   />
+        // }
+        autoFocus
+      />
+      <Form.Label>
+        <FormattedMessage
+          id="app.addDeviceTextfield"
+          defaultMessage="Device"
+        />
+      </Form.Label>
+      <Form.Control id ="txtDV" type="text" 
+      onChange={()=>deviceChange(document.getElementById("txtDV").value)}
+        // placeholder={
+        //   <FormattedMessage
+        //     id="app.addRegistryPlaceholder"
+        //     defaultMessage="Data"
+        //   />
+        // }
+        autoFocus
+      />
             </Form.Group>
           </Form>
           <Table striped>
@@ -708,7 +738,7 @@ function getMetaDataJSON(){
           <Button variant="outline-success" onClick={()=>deleteDeviceFromRegistry(
           registry_name,
           device_name,
-          "ebancumo.testnet",
+          accountId,
           )}>
             <FormattedMessage id="app.delBtn" defaultMessage="Delete"  />
           </Button>

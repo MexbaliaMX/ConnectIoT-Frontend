@@ -12,34 +12,35 @@ const callMethod = (account_id,method,params) => {
   // params.methodName = methodName;
   // params.accountId = accountId;
   //params.privateKey = privateKey;
- console.log("Parametros del metodo: "+ (JSON.stringify(params)));
+ //console.log("Parametros del metodo: "+ (JSON.stringify(params)));
  //console.log(account_id);
  //console.log(process.env.REACT_APP_API_BASE_URL);
- console.log("Método: "+JSON.stringify(method));
+ //console.log("Método: "+JSON.stringify(method));
   const url=process.env.REACT_APP_API_BASE_URL;
-  const privatekey=process.env.NEAR_PRIVATE_KEY;
-
-
+  const privatekey=process.env.REACT_APP_NEAR_PRIVATE_KEY;
+  const accountId=process.env.REACT_APP_NEAR_ACCOUNT_ID;
+  const environment=process.env.REACT_APP_NEAR_ENV;
   var body={account_id, method,params};
-  console.log("Cuerpo de la llamada: ");
-  console.log(body);
-  console.log(url);
-  console.log(privatekey);
-  console.log(process.env.NEAR_ACCOUNT_ID);
+  //console.log("Cuerpo de la llamada: ");
+ // console.log(body);
+  console.log("API url = "+url);
+  console.log("Environment = "+environment);
+  console.log("PrivateKey = "+privatekey);
+  console.log("AccountID = "+accountId);
    return axios.post(
        url+"/call",
         body,
        {
          headers: {
            "Content-Type": "application/json",
-           "Authorization": "Bearer 4bw3WsAzspp6kYRFvdxZntACCD2fyEY3js9u7ovnV6pzZQJ1vg57J9m68wvyWvqTqHsVByU3BkoS1aGFrjvf5jHH"
+           "Authorization": "Bearer "+privatekey
            ,
          },
        }
      )
      .then((res) => {
-       console.log("Status de llamada: "+res.status);
-       console.log("Respuesta llamada:")
+       console.log("Status: "+res.status);
+       console.log("Response:")
        console.log(res);
        return res; 
      });
@@ -96,9 +97,14 @@ export const addDeviceToRegistry = (registryName, deviceName, description, accou
     },
     
 
-  );
-  if (resp.status === 200) return "Device Added";
-  else return "Failed";
+  ).then((res)=>{
+    if (res.status === 200) {
+      return console.log(" Device "+deviceName+ " Added to registry");
+    } else {
+     return console.log ("Failed to add Device");
+    }
+  })
+  return resp;
 };
 
 export const deleteDeviceFromRegistry = (registryName, deviceName, accountId) => {
@@ -110,9 +116,16 @@ export const deleteDeviceFromRegistry = (registryName, deviceName, accountId) =>
       device_name: deviceName,
     },
     
-  );
-  if (resp.status === 200) return "Device Deleted";
-  else return "Failed";
+  ).then((res)=>{
+    if (res.status === 200) {
+      return console.log("Device "+deviceName+" Deleted from Registry");
+  }
+
+  else 
+  
+  return console.log("Failed to Delete Device "+ deviceName); 
+  })
+  return resp;
 };
 
 export const setDeviceData = (registryName, deviceName, data, accountId) => {

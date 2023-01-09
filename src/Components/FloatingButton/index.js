@@ -28,8 +28,9 @@ export default function FloatingButton() {
   const deviceChange =(device_name) => setDev(device_name);
   const descriptionChange=(dev_desc) => setDescription(dev_desc);
   
-console.log(registry_name);
-console.log(device_name);
+  const accountId=process.env.REACT_APP_NEAR_ACCOUNT_ID;
+  console.log(registry_name);
+  console.log(device_name);
   return (
     <div class="btn-container">
       <input type="checkbox" id="btn-mas" />
@@ -88,7 +89,7 @@ console.log(device_name);
             <FormattedMessage id="app.cancelBtn" defaultMessage="Cancel" />
           </Button>
           <Button variant="primary" onClick={
-            () => {createRegistry("ebancumo.testnet",registry_name
+            () => {createRegistry(accountId,registry_name
             )} }>
             <FormattedMessage id="app.addBtn" defaultMessage="Add"  />
           </Button>
@@ -175,7 +176,7 @@ console.log(device_name);
             registry_name,
             device_name,
             document.getElementById("txtDD").value,
-            "ebancumo.testnet",
+            accountId,
             )} }>
           <FormattedMessage id="app.addBtn" defaultMessage="Add"/>
           </Button>
@@ -226,7 +227,7 @@ console.log(device_name);
           </Button>
           <Button variant="outline-success" onClick={()=>deleteRegistry(
           registry_name,
-          "ebancumo.testnet",
+          accountId,
           )}>
             <FormattedMessage id="app.delBtn" defaultMessage="Delete"  />
           </Button>
