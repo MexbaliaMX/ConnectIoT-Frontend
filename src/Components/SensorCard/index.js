@@ -576,7 +576,7 @@ function getMetaDataJSON(){
       />
       <Form.Label>
         <FormattedMessage
-          id="app.addDeviceTextfield"
+          id="app.sensor"
           defaultMessage="Device"
         />
       </Form.Label>
