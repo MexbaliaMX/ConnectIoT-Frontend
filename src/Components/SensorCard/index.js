@@ -63,8 +63,8 @@ export default function SensorCard(props) {
         return resp;
     });
 
-    console.log("String items: "+JSON.stringify(dataJSON));
-     console.log("items: "+ dataJSON);
+    // console.log("String items: "+JSON.stringify(dataJSON));
+    //  console.log("items: "+ dataJSON);
     return dataJSON;
 
     
@@ -83,8 +83,8 @@ function getMetaDataJSON(){
       return resp;
   });
 
-   console.log("String items: "+JSON.stringify(metadataJSON));
-  console.log("items: "+ metadataJSON);
+  //  console.log("String items: "+JSON.stringify(metadataJSON));
+  // console.log("items: "+ metadataJSON);
   return metadataJSON;
 }
 

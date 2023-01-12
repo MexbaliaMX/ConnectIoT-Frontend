@@ -7,8 +7,9 @@
 
 # testing
 /coverage
-/.env
-/pass.txt
+.env
+pass.txt
+DHT11.py
 # production
 /build
 

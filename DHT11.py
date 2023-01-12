@@ -33,7 +33,7 @@ if __name__ == '__main__':
         ps='9V'
         if contract.get_device_metadata(registry_name,device_name) == {}:
             contract.set_device_metadata(registry_name,device_name,
-            {'Creation Date': bday, 'Location': loc, 'Power Supply': ps})
+            {'Creation Date': str(bday) 'Location': loc, 'Power Supply': ps})
             print(contract.get_device_metadata(registry_name,device_name))
         else :
 

@@ -28,7 +28,7 @@ const callMethod = (account_id,method,params) => {
   console.log("PrivateKey = "+privatekey);
   console.log("AccountID = "+accountId);
    return axios.post(
-       url+"/call",
+      "http://"+ url+"/call",
         body,
        {
          headers: {
@@ -55,10 +55,11 @@ export const createRegistry = (accountId,registryName ) => {
     
     
   ).then((res)=>{
-    if (res.status === 200) {
-      return console.log(" Registry "+registryName+ " Created");
+    if (res.data.data === false) {
+      return console.log ("Failed to create registry");
     } else {
-     return console.log ("Failed to create registry");
+      return console.log(" Registry "+registryName+ " Created");
+     
     }
   })
   return resp;
@@ -73,13 +74,13 @@ export const deleteRegistry = (registryName, accountId) => {
     
   
   ).then((res)=>{
-    if (res.status === 200) {
-      return console.log("Registry "+registryName+" Deleted");
+    if (res.data.data === false) {
+      return console.log("Failed to Delete Registry "+ registryName); 
   }
 
-  else 
-  
-  return console.log("Failed to Delete Registry "+ registryName); 
+  else {
+  return console.log("Registry "+registryName+" Deleted");
+  }
   })
 
   return resp;
@@ -98,12 +99,14 @@ export const addDeviceToRegistry = (registryName, deviceName, description, accou
     
 
   ).then((res)=>{
-    if (res.status === 200) {
-      return console.log(" Device "+deviceName+ " Added to registry");
+    if (res.data.data === false) {
+      return console.log ("Failed to add Device");
     } else {
-     return console.log ("Failed to add Device");
+      return console.log(" Device "+deviceName+ " Added to registry");
+     
     }
   })
+  console.log(resp);
   return resp;
 };
 
@@ -117,13 +120,12 @@ export const deleteDeviceFromRegistry = (registryName, deviceName, accountId) =>
     },
     
   ).then((res)=>{
-    if (res.status === 200) {
-      return console.log("Device "+deviceName+" Deleted from Registry");
+    if (res.data.data === false) {
+      return console.log("Failed to Delete Device "+ deviceName);
   }
-
-  else 
-  
-  return console.log("Failed to Delete Device "+ deviceName); 
+  else {
+    return console.log("Device "+deviceName+" Deleted from Registry");
+    } 
   })
   return resp;
 };
