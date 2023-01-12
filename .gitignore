@@ -7,13 +7,14 @@
 
 # testing
 /coverage
-.env
-pass.txt
-DHT11.py
+
 # production
 /build
 
 # misc
+.env
+pass.txt
+DHT11.py
 .DS_Store
 .env.local
 .env.development.local
